@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lyvora — Take care of your life. Automatically.</title>
+  <meta name="description" content="Lyvora is an AI personal assistant that automates your grocery shopping, improves your nutrition, and helps you stay healthy. All automatically." />
+  <meta property="og:title" content="Lyvora — Take care of your life. Automatically." />
+  <meta property="og:description" content="AI that learns your habits, automates shopping, and guides your health." />
+  <meta property="og:image" content="assets/logo.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --deep-blue:  #0F172A;
+      --green:      #34D399;
+      --purple:     #8B5CF6;
+      --bg:         #F8FAFC;
+      --text:       #0F172A;
+      --muted:      #64748B;
+      --border:     #E2E8F0;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(15,23,42,0.96);
+      backdrop-filter: blur(12px);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 40px; height: 64px;
+    }
+    .nav-logo { display: flex; align-items: center; gap: 12px; }
+    .nav-logo img { height: 28px; }
+    .nav-logo span { color: #F8FAFC; font-weight: 700; font-size: 18px; letter-spacing: -0.3px; }
+    .nav-cta {
+      background: var(--green); color: var(--deep-blue);
+      font-weight: 600; font-size: 14px;
+      padding: 8px 20px; border-radius: 8px;
+      text-decoration: none; transition: opacity .15s;
+    }
+    .nav-cta:hover { opacity: .85; }
+
+    /* ── HERO ── */
+    .hero {
+      background: var(--deep-blue);
+      padding: 140px 40px 100px;
+      text-align: center;
+    }
+    .hero-badge {
+      display: inline-block;
+      background: rgba(52,211,153,.12);
+      color: var(--green);
+      font-size: 13px; font-weight: 600;
+      padding: 6px 16px; border-radius: 100px;
+      margin-bottom: 28px;
+      border: 1px solid rgba(52,211,153,.2);
+    }
+    .hero h1 {
+      color: #F8FAFC;
+      font-size: clamp(36px, 6vw, 64px);
+      font-weight: 700;
+      line-height: 1.1;
+      letter-spacing: -1.5px;
+      max-width: 780px; margin: 0 auto 20px;
+    }
+    .hero h1 span { color: var(--green); }
+    .hero p {
+      color: #94A3B8;
+      font-size: clamp(16px, 2vw, 20px);
+      max-width: 520px; margin: 0 auto 48px;
+    }
+
+    .waitlist-form {
+      display: flex; gap: 12px; justify-content: center;
+      flex-wrap: wrap; max-width: 480px; margin: 0 auto;
+    }
+    .waitlist-form input {
+      flex: 1; min-width: 220px;
+      background: rgba(248,250,252,.08);
+      border: 1px solid rgba(248,250,252,.15);
+      color: #F8FAFC; font-family: inherit; font-size: 15px;
+      padding: 14px 18px; border-radius: 10px; outline: none;
+      transition: border-color .15s;
+    }
+    .waitlist-form input::placeholder { color: #64748B; }
+    .waitlist-form input:focus { border-color: var(--green); }
+    .waitlist-form button {
+      background: var(--green); color: var(--deep-blue);
+      font-family: inherit; font-weight: 700; font-size: 15px;
+      padding: 14px 28px; border-radius: 10px; border: none;
+      cursor: pointer; white-space: nowrap; transition: opacity .15s;
+    }
+    .waitlist-form button:hover { opacity: .85; }
+    .waitlist-form button:disabled { opacity: .5; cursor: default; }
+
+    .waitlist-msg {
+      margin-top: 16px; font-size: 14px;
+      color: var(--green); min-height: 20px;
+    }
+    .waitlist-msg.error { color: #F87171; }
+
+    /* ── SECTION BASE ── */
+    section { padding: 96px 40px; }
+    .section-label {
+      text-align: center;
+      font-size: 13px; font-weight: 600; letter-spacing: 1.5px;
+      text-transform: uppercase; color: var(--green);
+      margin-bottom: 16px;
+    }
+    .section-title {
+      text-align: center;
+      font-size: clamp(28px, 4vw, 42px);
+      font-weight: 700; letter-spacing: -0.8px;
+      color: var(--deep-blue); margin-bottom: 16px;
+    }
+    .section-sub {
+      text-align: center; color: var(--muted);
+      font-size: 17px; max-width: 540px;
+      margin: 0 auto 64px;
+    }
+
+    /* ── VALUE PROPS ── */
+    .values { background: var(--bg); }
+    .values-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 32px; max-width: 900px; margin: 0 auto;
+    }
+    .value-card {
+      background: #fff; border: 1px solid var(--border);
+      border-radius: 16px; padding: 32px 28px;
+      box-shadow: 0 1px 3px rgba(15,23,42,.05);
+    }
+    .value-icon { font-size: 32px; margin-bottom: 16px; }
+    .value-title { font-size: 17px; font-weight: 700; margin-bottom: 8px; }
+    .value-desc { color: var(--muted); font-size: 15px; line-height: 1.6; }
+
+    /* ── FEATURES (screenshots) ── */
+    .features { background: var(--deep-blue); }
+    .features .section-title { color: #F8FAFC; }
+    .features .section-sub { color: #94A3B8; }
+    .features .section-label { color: var(--green); }
+
+    .features-list {
+      display: flex; flex-direction: column; gap: 96px;
+      max-width: 1000px; margin: 0 auto;
+    }
+    .feature-row {
+      display: flex; align-items: center; gap: 64px;
+      flex-wrap: wrap;
+    }
+    .feature-row.reverse { flex-direction: row-reverse; }
+    .feature-text { flex: 1; min-width: 260px; }
+    .feature-tag {
+      display: inline-block;
+      background: rgba(52,211,153,.12);
+      color: var(--green);
+      font-size: 12px; font-weight: 600; letter-spacing: 1px;
+      text-transform: uppercase;
+      padding: 4px 12px; border-radius: 100px;
+      margin-bottom: 16px;
+    }
+    .feature-text h3 {
+      color: #F8FAFC; font-size: clamp(22px, 3vw, 30px);
+      font-weight: 700; letter-spacing: -0.5px;
+      margin-bottom: 16px; line-height: 1.2;
+    }
+    .feature-text p { color: #94A3B8; font-size: 16px; line-height: 1.7; }
+
+    .feature-img { flex: 1; min-width: 240px; max-width: 280px; margin: 0 auto; }
+    .feature-img img {
+      width: 100%; border-radius: 24px;
+      box-shadow: 0 24px 60px rgba(0,0,0,.5);
+    }
+
+    /* ── HOW IT WORKS ── */
+    .how { background: var(--bg); }
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 0; max-width: 860px; margin: 0 auto;
+      position: relative;
+    }
+    .step {
+      text-align: center; padding: 0 24px;
+      position: relative;
+    }
+    .step-num {
+      width: 48px; height: 48px; border-radius: 50%;
+      background: var(--green); color: var(--deep-blue);
+      font-weight: 700; font-size: 18px;
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 20px;
+    }
+    .step h4 { font-size: 16px; font-weight: 700; margin-bottom: 8px; }
+    .step p { color: var(--muted); font-size: 14px; line-height: 1.6; }
+
+    /* ── CTA BOTTOM ── */
+    .cta-bottom {
+      background: var(--deep-blue);
+      text-align: center; padding: 96px 40px;
+    }
+    .cta-bottom h2 {
+      color: #F8FAFC; font-size: clamp(28px, 4vw, 44px);
+      font-weight: 700; letter-spacing: -1px;
+      margin-bottom: 16px;
+    }
+    .cta-bottom h2 span { color: var(--green); }
+    .cta-bottom p { color: #94A3B8; font-size: 17px; margin-bottom: 40px; }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--deep-blue); border-top: 1px solid rgba(255,255,255,.06);
+      padding: 32px 40px;
+      display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: 12px;
+    }
+    .footer-logo { display: flex; align-items: center; gap: 10px; }
+    .footer-logo img { height: 22px; }
+    .footer-logo span { color: #F8FAFC; font-weight: 600; font-size: 15px; }
+    footer p { color: #475569; font-size: 13px; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 640px) {
+      nav { padding: 0 20px; }
+      section { padding: 72px 20px; }
+      .hero { padding: 120px 20px 80px; }
+      footer { padding: 24px 20px; flex-direction: column; align-items: flex-start; }
+      .feature-row, .feature-row.reverse { flex-direction: column; }
+      .feature-img { max-width: 220px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">
+    <img src="assets/logo.png" alt="Lyvora" />
+    <span>Lyvora</span>
+  </div>
+  <a href="#waitlist" class="nav-cta">Join waitlist</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="top">
+  <div class="hero-badge">Now in private beta</div>
+  <h1>Take care of your life.<br /><span>Automatically.</span></h1>
+  <p>Lyvora learns your habits, automates your shopping, and guides your nutrition and fitness — all in one place.</p>
+
+  <div id="waitlist">
+    <form class="waitlist-form" id="waitlistForm">
+      <input type="email" id="emailInput" placeholder="your@email.com" required autocomplete="email" />
+      <button type="submit" id="submitBtn">Join waitlist</button>
+    </form>
+    <p class="waitlist-msg" id="waitlistMsg"></p>
+  </div>
+</section>
+
+<!-- VALUE PROPS -->
+<section class="values">
+  <p class="section-label">What Lyvora does</p>
+  <h2 class="section-title">Your AI life assistant</h2>
+  <p class="section-sub">One app that handles the daily decisions you shouldn't have to think about.</p>
+
+  <div class="values-grid">
+    <div class="value-card">
+      <div class="value-icon">🛒</div>
+      <div class="value-title">Learns what you consume</div>
+      <div class="value-desc">Scan receipts, use voice, or scan barcodes. Lyvora builds your consumption profile automatically.</div>
+    </div>
+    <div class="value-card">
+      <div class="value-icon">⚡</div>
+      <div class="value-title">Automates your shopping</div>
+      <div class="value-desc">Lyvora predicts what you'll need before you run out and keeps your pantry always ready.</div>
+    </div>
+    <div class="value-card">
+      <div class="value-icon">🥗</div>
+      <div class="value-title">Improves your nutrition</div>
+      <div class="value-desc">Personalized recipes based on what you have at home, your goals, and your dietary needs.</div>
+    </div>
+    <div class="value-card">
+      <div class="value-icon">💪</div>
+      <div class="value-title">Helps you stay healthy</div>
+      <div class="value-desc">Longevity-focused fitness routines adapted to your level, age, and health goals.</div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES WITH SCREENSHOTS -->
+<section class="features">
+  <p class="section-label">The app</p>
+  <h2 class="section-title">Three pillars, one app</h2>
+  <p class="section-sub">Everything you need to live healthier — without the effort.</p>
+
+  <div class="features-list">
+
+    <div class="feature-row">
+      <div class="feature-text">
+        <span class="feature-tag">Nutrition</span>
+        <h3>Recipes made for your pantry</h3>
+        <p>Lyvora suggests recipes based on what you actually have at home, your nutrition goals, and your dietary restrictions. Rate them to teach Lyvora your taste.</p>
+      </div>
+      <div class="feature-img">
+        <img src="assets/screenshot-recipes.png" alt="Recipes screen" />
+      </div>
+    </div>
+
+    <div class="feature-row reverse">
+      <div class="feature-text">
+        <span class="feature-tag">Analytics</span>
+        <h3>Understand your consumption habits</h3>
+        <p>See what you buy most, how often, and what categories dominate your diet. Lyvora turns your purchase history into actionable insights.</p>
+      </div>
+      <div class="feature-img">
+        <img src="assets/screenshot-analysis.png" alt="Analysis screen" />
+      </div>
+    </div>
+
+    <div class="feature-row">
+      <div class="feature-text">
+        <span class="feature-tag">Fitness</span>
+        <h3>Your personal longevity trainer</h3>
+        <p>Daily and weekly workout plans based on longevity science — Zone 2 cardio, strength, mobility. Adapted to your fitness level and age.</p>
+      </div>
+      <div class="feature-img">
+        <img src="assets/screenshot-trainer.png" alt="Trainer screen" />
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="how">
+  <p class="section-label">How it works</p>
+  <h2 class="section-title">Up and running in minutes</h2>
+  <p class="section-sub">No manual setup. Lyvora learns from your data and gets smarter over time.</p>
+
+  <div class="steps">
+    <div class="step">
+      <div class="step-num">1</div>
+      <h4>Log your purchases</h4>
+      <p>Scan receipts, use voice memos, or scan barcodes. Any input works.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">2</div>
+      <h4>Lyvora learns</h4>
+      <p>Your consumption profile is built automatically from your habits.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">3</div>
+      <h4>Get guidance</h4>
+      <p>Recipes, shopping schedule, and fitness routines tailored to you.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">4</div>
+      <h4>Live better</h4>
+      <p>Less friction, healthier habits, more time for what matters.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BOTTOM -->
+<section class="cta-bottom">
+  <h2>Life, <span>cared for.</span></h2>
+  <p>Join the waitlist and be first to access Lyvora when we launch.</p>
+  <form class="waitlist-form" id="waitlistForm2">
+    <input type="email" id="emailInput2" placeholder="your@email.com" required autocomplete="email" />
+    <button type="submit" id="submitBtn2">Join waitlist</button>
+  </form>
+  <p class="waitlist-msg" id="waitlistMsg2"></p>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">
+    <img src="assets/logo.png" alt="Lyvora" />
+    <span>Lyvora</span>
+  </div>
+  <p>© 2026 Lyvora. All rights reserved.</p>
+</footer>
+
+<script>
+  const API = 'https://ai-grocery-agent.onrender.com';
+
+  async function submitWaitlist(email, msgEl, btnEl) {
+    btnEl.disabled = true;
+    btnEl.textContent = 'Joining...';
+    msgEl.className = 'waitlist-msg';
+    msgEl.textContent = '';
+    try {
+      const res = await fetch(`${API}/waitlist`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email }),
+      });
+      if (!res.ok) throw new Error();
+      msgEl.textContent = "You're on the list! We'll be in touch.";
+    } catch {
+      msgEl.className = 'waitlist-msg error';
+      msgEl.textContent = 'Something went wrong. Try again.';
+      btnEl.disabled = false;
+      btnEl.textContent = 'Join waitlist';
+      return;
+    }
+    btnEl.textContent = '✓ You\'re in';
+  }
+
+  document.getElementById('waitlistForm').addEventListener('submit', e => {
+    e.preventDefault();
+    submitWaitlist(
+      document.getElementById('emailInput').value,
+      document.getElementById('waitlistMsg'),
+      document.getElementById('submitBtn'),
+    );
+  });
+
+  document.getElementById('waitlistForm2').addEventListener('submit', e => {
+    e.preventDefault();
+    submitWaitlist(
+      document.getElementById('emailInput2').value,
+      document.getElementById('waitlistMsg2'),
+      document.getElementById('submitBtn2'),
+    );
+  });
+</script>
+</body>
+</html>
