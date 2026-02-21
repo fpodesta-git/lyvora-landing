@@ -1,13 +1,13 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Lyvora — Take care of your life. Automatically.</title>
-  <meta name="description" content="Lyvora is an AI personal assistant that automates your grocery shopping, improves your nutrition, and helps you stay healthy. All automatically." />
-  <meta property="og:title" content="Lyvora — Take care of your life. Automatically." />
-  <meta property="og:description" content="AI that learns your habits, automates shopping, and guides your health." />
-  <meta property="og:image" content="assets/logo.png" />
+  <title>Lyvora — Cuidá tu vida. Automáticamente.</title>
+  <meta name="description" content="Lyvora es tu asistente personal con IA que automatiza tus compras, mejora tu nutrición y te ayuda a vivir más saludable. Todo automáticamente." />
+  <meta property="og:title" content="Lyvora — Cuidá tu vida. Automáticamente." />
+  <meta property="og:description" content="IA que aprende tus hábitos, automatiza tus compras y guía tu salud." />
+  <meta property="og:image" content="../assets/logo.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
@@ -151,11 +151,10 @@
     .value-title { font-size: 17px; font-weight: 700; margin-bottom: 8px; }
     .value-desc { color: var(--muted); font-size: 15px; line-height: 1.6; }
 
-    /* ── FEATURES (screenshots) ── */
+    /* ── FEATURES ── */
     .features { background: var(--deep-blue); }
     .features .section-title { color: #F8FAFC; }
     .features .section-sub { color: #94A3B8; }
-    .features .section-label { color: var(--green); }
 
     .features-list {
       display: flex; flex-direction: column; gap: 96px;
@@ -195,12 +194,8 @@
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
       gap: 0; max-width: 860px; margin: 0 auto;
-      position: relative;
     }
-    .step {
-      text-align: center; padding: 0 24px;
-      position: relative;
-    }
+    .step { text-align: center; padding: 0 24px; }
     .step-num {
       width: 48px; height: 48px; border-radius: 50%;
       background: var(--green); color: var(--deep-blue);
@@ -252,25 +247,25 @@
 <!-- NAV -->
 <nav>
   <div class="nav-logo">
-    <img src="assets/logo.png" alt="Lyvora" />
+    <img src="../assets/logo.png" alt="Lyvora" />
     <span>Lyvora</span>
   </div>
   <div class="nav-right">
-    <a href="/es" class="nav-lang">ES</a>
-    <a href="#waitlist" class="nav-cta">Join waitlist</a>
+    <a href="/" class="nav-lang">EN</a>
+    <a href="#waitlist" class="nav-cta">Anotate</a>
   </div>
 </nav>
 
 <!-- HERO -->
 <section class="hero" id="top">
-  <div class="hero-badge">Now in private beta</div>
-  <h1>Take care of your life.<br /><span>Automatically.</span></h1>
-  <p>Lyvora learns your habits, automates your shopping, and guides your nutrition and fitness — all in one place.</p>
+  <div class="hero-badge">Ahora en beta privada</div>
+  <h1>Cuidá tu vida.<br /><span>Automáticamente.</span></h1>
+  <p>Lyvora aprende tus hábitos, automatiza tus compras y guía tu nutrición y tu entrenamiento — todo en un solo lugar.</p>
 
   <div id="waitlist">
     <form class="waitlist-form" id="waitlistForm">
-      <input type="email" id="emailInput" placeholder="your@email.com" required autocomplete="email" />
-      <button type="submit" id="submitBtn">Join waitlist</button>
+      <input type="email" id="emailInput" placeholder="tu@email.com" required autocomplete="email" />
+      <button type="submit" id="submitBtn">Anotate</button>
     </form>
     <p class="waitlist-msg" id="waitlistMsg"></p>
   </div>
@@ -278,72 +273,72 @@
 
 <!-- VALUE PROPS -->
 <section class="values">
-  <p class="section-label">What Lyvora does</p>
-  <h2 class="section-title">Your AI life assistant</h2>
-  <p class="section-sub">One app that handles the daily decisions you shouldn't have to think about.</p>
+  <p class="section-label">Qué hace Lyvora</p>
+  <h2 class="section-title">Tu asistente personal con IA</h2>
+  <p class="section-sub">Una sola app que se ocupa de las decisiones del día a día que no deberías tener que pensar.</p>
 
   <div class="values-grid">
     <div class="value-card">
       <div class="value-icon">🛒</div>
-      <div class="value-title">Learns what you consume</div>
-      <div class="value-desc">Scan receipts, use voice, or scan barcodes. Lyvora builds your consumption profile automatically.</div>
+      <div class="value-title">Aprende lo que consumís</div>
+      <div class="value-desc">Escaneá tickets, usá la voz o los códigos de barras. Lyvora construye tu perfil de consumo solo.</div>
     </div>
     <div class="value-card">
       <div class="value-icon">⚡</div>
-      <div class="value-title">Automates your shopping</div>
-      <div class="value-desc">Lyvora predicts what you'll need before you run out and keeps your pantry always ready.</div>
+      <div class="value-title">Automatiza tus compras</div>
+      <div class="value-desc">Lyvora predice lo que vas a necesitar antes de que te quedes sin stock y mantiene tu despensa lista.</div>
     </div>
     <div class="value-card">
       <div class="value-icon">🥗</div>
-      <div class="value-title">Improves your nutrition</div>
-      <div class="value-desc">Personalized recipes based on what you have at home, your goals, and your dietary needs.</div>
+      <div class="value-title">Mejora tu nutrición</div>
+      <div class="value-desc">Recetas personalizadas según lo que tenés en casa, tus objetivos y tus restricciones alimentarias.</div>
     </div>
     <div class="value-card">
       <div class="value-icon">💪</div>
-      <div class="value-title">Helps you stay healthy</div>
-      <div class="value-desc">Longevity-focused fitness routines adapted to your level, age, and health goals.</div>
+      <div class="value-title">Te ayuda a estar más sano</div>
+      <div class="value-desc">Rutinas de fitness orientadas a la longevidad, adaptadas a tu nivel, tu edad y tus objetivos.</div>
     </div>
   </div>
 </section>
 
 <!-- FEATURES WITH SCREENSHOTS -->
 <section class="features">
-  <p class="section-label">The app</p>
-  <h2 class="section-title">Three pillars, one app</h2>
-  <p class="section-sub">Everything you need to live healthier — without the effort.</p>
+  <p class="section-label">La app</p>
+  <h2 class="section-title">Tres pilares, una sola app</h2>
+  <p class="section-sub">Todo lo que necesitás para vivir más saludable — sin el esfuerzo.</p>
 
   <div class="features-list">
 
     <div class="feature-row">
       <div class="feature-text">
-        <span class="feature-tag">Nutrition</span>
-        <h3>Recipes made for your pantry</h3>
-        <p>Lyvora suggests recipes based on what you actually have at home, your nutrition goals, and your dietary restrictions. Rate them to teach Lyvora your taste.</p>
+        <span class="feature-tag">Nutrición</span>
+        <h3>Recetas hechas para tu despensa</h3>
+        <p>Lyvora sugiere recetas basadas en lo que tenés en casa, tus objetivos nutricionales y tus restricciones. Calificálas para que aprenda tu gusto.</p>
       </div>
       <div class="feature-img">
-        <img src="assets/screenshot-recipes.png" alt="Recipes screen" />
+        <img src="../assets/screenshot-recipes.png" alt="Pantalla de recetas" />
       </div>
     </div>
 
     <div class="feature-row reverse">
       <div class="feature-text">
-        <span class="feature-tag">Analytics</span>
-        <h3>Understand your consumption habits</h3>
-        <p>See what you buy most, how often, and what categories dominate your diet. Lyvora turns your purchase history into actionable insights.</p>
+        <span class="feature-tag">Análisis</span>
+        <h3>Entendé tus hábitos de consumo</h3>
+        <p>Mirá qué comprás más, con qué frecuencia y qué categorías dominan tu dieta. Lyvora convierte tu historial de compras en información útil.</p>
       </div>
       <div class="feature-img">
-        <img src="assets/screenshot-analysis.png" alt="Analysis screen" />
+        <img src="../assets/screenshot-analysis.png" alt="Pantalla de análisis" />
       </div>
     </div>
 
     <div class="feature-row">
       <div class="feature-text">
         <span class="feature-tag">Fitness</span>
-        <h3>Your personal longevity trainer</h3>
-        <p>Daily and weekly workout plans based on longevity science — Zone 2 cardio, strength, mobility. Adapted to your fitness level and age.</p>
+        <h3>Tu personal trainer de longevidad</h3>
+        <p>Planes de entrenamiento diarios y semanales basados en ciencia de longevidad — Zona 2, fuerza, movilidad. Adaptados a tu nivel y tu edad.</p>
       </div>
       <div class="feature-img">
-        <img src="assets/screenshot-trainer.png" alt="Trainer screen" />
+        <img src="../assets/screenshot-trainer.png" alt="Pantalla de trainer" />
       </div>
     </div>
 
@@ -352,41 +347,41 @@
 
 <!-- HOW IT WORKS -->
 <section class="how">
-  <p class="section-label">How it works</p>
-  <h2 class="section-title">Up and running in minutes</h2>
-  <p class="section-sub">No manual setup. Lyvora learns from your data and gets smarter over time.</p>
+  <p class="section-label">Cómo funciona</p>
+  <h2 class="section-title">En marcha en minutos</h2>
+  <p class="section-sub">Sin configuración manual. Lyvora aprende de tus datos y mejora con el tiempo.</p>
 
   <div class="steps">
     <div class="step">
       <div class="step-num">1</div>
-      <h4>Log your purchases</h4>
-      <p>Scan receipts, use voice memos, or scan barcodes. Any input works.</p>
+      <h4>Registrá tus compras</h4>
+      <p>Escaneá tickets, usá notas de voz o códigos de barras. Cualquier input sirve.</p>
     </div>
     <div class="step">
       <div class="step-num">2</div>
-      <h4>Lyvora learns</h4>
-      <p>Your consumption profile is built automatically from your habits.</p>
+      <h4>Lyvora aprende</h4>
+      <p>Tu perfil de consumo se construye automáticamente a partir de tus hábitos.</p>
     </div>
     <div class="step">
       <div class="step-num">3</div>
-      <h4>Get guidance</h4>
-      <p>Recipes, shopping schedule, and fitness routines tailored to you.</p>
+      <h4>Recibí orientación</h4>
+      <p>Recetas, cronograma de compras y rutinas de fitness hechas para vos.</p>
     </div>
     <div class="step">
       <div class="step-num">4</div>
-      <h4>Live better</h4>
-      <p>Less friction, healthier habits, more time for what matters.</p>
+      <h4>Vivís mejor</h4>
+      <p>Menos fricción, hábitos más saludables, más tiempo para lo que importa.</p>
     </div>
   </div>
 </section>
 
 <!-- CTA BOTTOM -->
 <section class="cta-bottom">
-  <h2>Life, <span>cared for.</span></h2>
-  <p>Join the waitlist and be first to access Lyvora when we launch.</p>
+  <h2>Tu vida, <span>en buenas manos.</span></h2>
+  <p>Anotate en la lista de espera y sé el primero en acceder cuando lancemos.</p>
   <form class="waitlist-form" id="waitlistForm2">
-    <input type="email" id="emailInput2" placeholder="your@email.com" required autocomplete="email" />
-    <button type="submit" id="submitBtn2">Join waitlist</button>
+    <input type="email" id="emailInput2" placeholder="tu@email.com" required autocomplete="email" />
+    <button type="submit" id="submitBtn2">Anotate</button>
   </form>
   <p class="waitlist-msg" id="waitlistMsg2"></p>
 </section>
@@ -394,10 +389,10 @@
 <!-- FOOTER -->
 <footer>
   <div class="footer-logo">
-    <img src="assets/logo.png" alt="Lyvora" />
+    <img src="../assets/logo.png" alt="Lyvora" />
     <span>Lyvora</span>
   </div>
-  <p>© 2026 Lyvora. All rights reserved.</p>
+  <p>© 2026 Lyvora. Todos los derechos reservados.</p>
 </footer>
 
 <script>
@@ -405,7 +400,7 @@
 
   async function submitWaitlist(email, msgEl, btnEl) {
     btnEl.disabled = true;
-    btnEl.textContent = 'Joining...';
+    btnEl.textContent = 'Enviando...';
     msgEl.className = 'waitlist-msg';
     msgEl.textContent = '';
     try {
@@ -415,15 +410,15 @@
         body: JSON.stringify({ email }),
       });
       if (!res.ok) throw new Error();
-      msgEl.textContent = "You're on the list! We'll be in touch.";
+      msgEl.textContent = '¡Listo! Te avisamos cuando lancemos.';
     } catch {
       msgEl.className = 'waitlist-msg error';
-      msgEl.textContent = 'Something went wrong. Try again.';
+      msgEl.textContent = 'Algo salió mal. Intentá de nuevo.';
       btnEl.disabled = false;
-      btnEl.textContent = 'Join waitlist';
+      btnEl.textContent = 'Anotate';
       return;
     }
-    btnEl.textContent = '✓ You\'re in';
+    btnEl.textContent = '✓ Ya estás anotado';
   }
 
   document.getElementById('waitlistForm').addEventListener('submit', e => {
