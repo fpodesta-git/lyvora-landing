@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Privacy Policy — Lyvora</title>
+  <meta name="description" content="Lyvora Privacy Policy" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --deep-blue:  #0F172A;
+      --green:      #34D399;
+      --purple:     #8B5CF6;
+      --bg:         #F8FAFC;
+      --text:       #0F172A;
+      --muted:      #64748B;
+      --border:     #E2E8F0;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(15,23,42,0.96);
+      backdrop-filter: blur(12px);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 40px; height: 80px;
+    }
+    .nav-logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+    .nav-logo img { height: 64px; }
+    .nav-logo span { color: #F8FAFC; font-weight: 700; font-size: 18px; letter-spacing: -0.3px; }
+
+    /* ── CONTENT ── */
+    .container {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 120px 24px 80px;
+    }
+
+    h1 {
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--deep-blue);
+      margin-bottom: 8px;
+    }
+
+    .updated {
+      color: var(--muted);
+      font-size: 14px;
+      margin-bottom: 48px;
+    }
+
+    h2 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--deep-blue);
+      margin: 36px 0 12px;
+    }
+
+    p {
+      color: #334155;
+      margin-bottom: 12px;
+      font-size: 15px;
+    }
+
+    ul {
+      color: #334155;
+      font-size: 15px;
+      padding-left: 20px;
+      margin-bottom: 12px;
+    }
+
+    ul li { margin-bottom: 6px; }
+
+    a { color: var(--purple); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    .footer {
+      text-align: center;
+      padding: 40px 24px;
+      color: var(--muted);
+      font-size: 13px;
+      border-top: 1px solid var(--border);
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a class="nav-logo" href="/">
+      <img src="/assets/logo.png" alt="Lyvora logo" />
+      <span>Lyvora</span>
+    </a>
+  </nav>
+
+  <div class="container">
+    <h1>Privacy Policy</h1>
+    <p class="updated">Last updated: March 11, 2026</p>
+
+    <p>Lyvora ("we", "our", or "us") is committed to protecting your privacy. This Privacy Policy explains how we collect, use, and safeguard your information when you use the Lyvora mobile application.</p>
+
+    <h2>1. Information We Collect</h2>
+    <p>We collect the following types of information:</p>
+    <ul>
+      <li><strong>Account data:</strong> email address and household profile (language, country, dietary preferences).</li>
+      <li><strong>Purchase data:</strong> grocery items, quantities, prices, and store information you record.</li>
+      <li><strong>Health & fitness data:</strong> nutrition goals, dietary restrictions, allergens, fitness level, and activity preferences you voluntarily provide.</li>
+      <li><strong>Voice recordings:</strong> audio captured when you use the voice input feature, processed in real time and not stored.</li>
+      <li><strong>Camera images:</strong> photos of receipts or barcodes taken within the app, used solely for data extraction and not stored.</li>
+    </ul>
+
+    <h2>2. How We Use Your Information</h2>
+    <ul>
+      <li>To provide personalized shopping lists, nutrition recommendations, and fitness plans.</li>
+      <li>To learn your consumption habits and improve stock predictions.</li>
+      <li>To send push notifications about expiring products or low stock.</li>
+      <li>To improve our AI models and app features in aggregate, anonymized form.</li>
+    </ul>
+
+    <h2>3. Data Storage & Security</h2>
+    <p>Your data is stored in a secure PostgreSQL database hosted by Supabase, with encryption at rest and in transit (TLS). We use industry-standard security practices to protect your information.</p>
+
+    <h2>4. Third-Party Services</h2>
+    <p>We use the following third-party services to operate Lyvora:</p>
+    <ul>
+      <li><strong>Groq:</strong> AI language model processing (text and voice). Data is sent to Groq's API and subject to their privacy policy.</li>
+      <li><strong>Open Food Facts:</strong> Nutritional data lookup by barcode. No personal data is shared.</li>
+      <li><strong>Supabase:</strong> Database hosting.</li>
+      <li><strong>Expo / EAS:</strong> App distribution and push notification delivery.</li>
+    </ul>
+
+    <h2>5. Data Sharing</h2>
+    <p>We do not sell, rent, or share your personal data with third parties for marketing purposes. Data is only shared with the service providers listed above as necessary to operate the app.</p>
+
+    <h2>6. Data Retention</h2>
+    <p>We retain your data for as long as your account is active. You may request deletion of your account and all associated data at any time by contacting us.</p>
+
+    <h2>7. Your Rights</h2>
+    <p>Depending on your jurisdiction, you may have the right to access, correct, or delete your personal data. To exercise these rights, contact us at <a href="mailto:facundo.podesta@gmail.com">facundo.podesta@gmail.com</a>.</p>
+
+    <h2>8. Children's Privacy</h2>
+    <p>Lyvora is not directed at children under 13. We do not knowingly collect personal information from children under 13.</p>
+
+    <h2>9. Changes to This Policy</h2>
+    <p>We may update this Privacy Policy from time to time. We will notify you of significant changes via the app or by email.</p>
+
+    <h2>10. Contact</h2>
+    <p>If you have any questions about this Privacy Policy, please contact us at <a href="mailto:facundo.podesta@gmail.com">facundo.podesta@gmail.com</a>.</p>
+  </div>
+
+  <footer class="footer">
+    <p>© 2026 Lyvora. All rights reserved.</p>
+  </footer>
+
+</body>
+</html>
